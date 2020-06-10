@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/base"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        tools:context=".activities.JumpActivity">
+
+        <TextView
+            android:id="@+id/tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="firstActivity"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:animateLayoutChanges="true"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tag" />
+
+        <Button
+            android:id="@+id/jump_a"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="20dp"
+            android:text="页面1"
+            app:layout_constraintEnd_toStartOf="@id/jump_b"
+            app:layout_constraintTop_toTopOf="@id/jump_b" />
+
+        <Button
+            android:id="@+id/jump_b"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="50dp"
+            android:text="页面2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_container" />
+
+        <Button
+            android:id="@+id/jump_c"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:text="页面3"
+            app:layout_constraintStart_toEndOf="@id/jump_b"
+            app:layout_constraintTop_toTopOf="@id/jump_b" />
+
+        <Button
+            android:id="@+id/a_fragment"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:text="碎片A"
+            app:layout_constraintEnd_toStartOf="@id/b_fragment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/jump_b" />
+
+        <Button
+            android:id="@+id/b_fragment"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:text="碎片B"
+            app:layout_constraintEnd_toStartOf="@id/hide_show"
+            app:layout_constraintStart_toEndOf="@id/a_fragment"
+            app:layout_constraintTop_toBottomOf="@id/jump_b" />
+
+        <Button
+            android:id="@+id/hide_show"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:text="显隐"
+            app:layout_constraintEnd_toStartOf="@id/remove"
+            app:layout_constraintStart_toEndOf="@id/b_fragment"
+            app:layout_constraintTop_toBottomOf="@id/jump_b" />
+
+        <Button
+            android:id="@+id/remove"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:text="移除"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/hide_show"
+            app:layout_constraintTop_toBottomOf="@id/jump_b" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
