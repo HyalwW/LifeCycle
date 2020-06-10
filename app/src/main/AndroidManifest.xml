@@ -26,6 +26,7 @@
         <activity android:name=".activities.ThirdActivity" />
 
         <service android:name=".serivces.GodEye" />
+        <service android:name=".serivces.TestFloatService" />
     </application>
 
 </manifest>

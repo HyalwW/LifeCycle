@@ -1,8 +1,12 @@
 package com.example.lifecycle.activities;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -19,6 +23,7 @@ import com.example.lifecycle.databinding.ActivityJumpBinding;
 import com.example.lifecycle.fragments.AFragment;
 import com.example.lifecycle.fragments.BFragment;
 import com.example.lifecycle.fragments.JumpFragment;
+import com.example.lifecycle.serivces.TestFloatService;
 
 import java.util.Random;
 
@@ -28,6 +33,7 @@ public abstract class JumpActivity extends BaseActivity<ActivityJumpBinding> imp
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
     private JumpFragment toFragment;
+    private boolean isBindService;
 
     @Override
     protected int layoutId() {
@@ -91,7 +97,25 @@ public abstract class JumpActivity extends BaseActivity<ActivityJumpBinding> imp
                 transaction.remove(fragment).commit();
             }
         });
+        dataBinding.startService.setOnClickListener(v -> startService(new Intent(this, TestFloatService.class)));
+        dataBinding.bindService.setOnClickListener(v -> {
+            bindService(new Intent(this, TestFloatService.class), connection, BIND_AUTO_CREATE);
+            isBindService = true;
+        });
+        dataBinding.stopService.setOnClickListener(v -> stopService(new Intent(this, TestFloatService.class)));
     }
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            send("onServiceConnected");
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            send("onServiceDisconnected");
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -133,6 +157,9 @@ public abstract class JumpActivity extends BaseActivity<ActivityJumpBinding> imp
     protected void onDestroy() {
         super.onDestroy();
         send("onDestroy");
+        if (isBindService) {
+            unbindService(connection);
+        }
     }
 
     @Override

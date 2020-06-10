@@ -36,7 +36,8 @@ public class GodViewHolder extends AbsAdapter.BaseViewHolder<Bean, ItemInfoBindi
         dataBinding.bottom.setVisibility(View.VISIBLE);
         if (position == 0) {
             dataBinding.top.setVisibility(View.GONE);
-        } else if (position == count - 1) {
+        }
+        if (position == count - 1) {
             dataBinding.bottom.setVisibility(View.GONE);
         }
     }

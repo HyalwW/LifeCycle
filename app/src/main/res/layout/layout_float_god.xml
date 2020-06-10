@@ -10,8 +10,16 @@
         android:id="@+id/base"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/float_bg"
-        android:paddingTop="20dp">
+        android:background="@drawable/float_bg">
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.example.lifecycle.MaxHeightListView
             android:id="@+id/list_view"
@@ -20,7 +28,7 @@
             android:divider="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/version"
             app:max_height="200dp" />
 
         <Button

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.os.Build;
 
 import com.example.lifecycle.R;
 import com.example.lifecycle.Utils;
@@ -12,6 +13,7 @@ import com.example.lifecycle.base.BaseFloatService;
 import com.example.lifecycle.databinding.LayoutFloatGodBinding;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Wang.Wenhui
@@ -37,6 +39,7 @@ public class GodEye extends BaseFloatService<LayoutFloatGodBinding> {
 
     @Override
     protected void initView() {
+        dataBinding.version.setText(String.format(Locale.CHINA, "sdk版本：%d", Build.VERSION.SDK_INT));
         dataBinding.listView.setAdapter(adapter);
         dataBinding.clear.setOnClickListener(v -> adapter.clear());
     }

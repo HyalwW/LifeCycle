@@ -23,12 +23,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 public abstract class BaseFloatService<DB extends ViewDataBinding> extends Service {
-    protected final String TAG = this.getClass().getName();
+    protected final String TAG = getClass().getSimpleName();
     protected DB dataBinding;
     protected WindowManager windowManager;
     protected WindowManager.LayoutParams params;
     protected boolean isShowing;
-    private boolean init;
     private int startX, startY;
     protected int displayWidth, displayHeight;
     protected int[] measuredMatrix;
@@ -93,10 +92,7 @@ public abstract class BaseFloatService<DB extends ViewDataBinding> extends Servi
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (!init) {
-            show();
-            init = true;
-        }
+        show();
         return START_NOT_STICKY;
     }
 
@@ -218,7 +214,6 @@ public abstract class BaseFloatService<DB extends ViewDataBinding> extends Servi
             if (windowManager != null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     if (dataBinding.getRoot().isAttachedToWindow()) {
-                        Log.e(TAG, "float is attachedToWindow");
                         //dataBinding.getRoot().onDetachWindow()
                         windowManager.removeViewImmediate(dataBinding.getRoot());
                     } else {
