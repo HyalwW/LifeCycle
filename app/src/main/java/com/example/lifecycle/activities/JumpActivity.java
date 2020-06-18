@@ -204,7 +204,13 @@ public abstract class JumpActivity extends BaseActivity<ActivityJumpBinding> imp
 
     @Override
     public void onClick(View v) {
-        setTargetActivity((Class<? extends BaseActivity>) v.getTag());
-        selectLaunchMode();
+        Class<? extends BaseActivity> activity = (Class<? extends BaseActivity>) v.getTag();
+        setTargetActivity(activity);
+        if (activity != ThirdActivity.class) {
+            selectLaunchMode();
+        } else {
+            launchMode = 0;
+            startToTarget();
+        }
     }
 }

@@ -20,7 +20,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
     protected String TAG = getClass().getSimpleName();
     protected DB dataBinding;
     private Class<? extends BaseActivity> targetActivity;
-    private int launchMode = -1;
+    protected int launchMode = -1;
     private LaunchDialog dialog;
 
     @Override

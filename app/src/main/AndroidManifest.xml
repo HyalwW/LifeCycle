@@ -23,7 +23,9 @@
         </activity>
         <activity android:name=".activities.FirstActivity" />
         <activity android:name=".activities.SecondActivity" />
-        <activity android:name=".activities.ThirdActivity" />
+        <activity
+            android:name=".activities.ThirdActivity"
+            android:launchMode="singleInstance" />
 
         <service android:name=".serivces.GodEye" />
         <service android:name=".serivces.TestFloatService" />
